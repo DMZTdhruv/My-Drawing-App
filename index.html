@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <div class="blob-cover">
+   </div>
+   <div class="blob" id="blob"> </div>
+   <span class="clear-cavas-warning-sign sign" data-visible="false">Clear canvas first using tool!</span>
+   <span class="draw-success-sign sign" data-visible="false">Now you can change color!</span>
+   <div class="container" id="app">
+      <button class="navtogglebtn">
+         Tools
+      </button>
+      <nav class="responsive-nav" data-visible="false">
+         <div class="first-part">
+            <div class="brand">
+               DMZT
+            </div>
+            <div class="drawing-tools">
+               <p>Tools</p>
+               <div class="tools">
+                  <img src="Images/brush.png" alt="" class="brush img" data-active="false">
+                  <img src="Images/eraser.png" alt="" class="eraser img" data-active="false">
+                  <img src="Images/clear-cache-9.png" alt="clear img" class="clear" data-active="false">
+               </div>
+            </div>
+         </div>
+         <div class="second-part">
+            <div class="color-grid accordian-color">
+               <div class="accordian-color-content-part" data-visible="false">
+                  <div class="accordian-heading accordian-header-color">
+                     <button data-visible="false" class="color-tool">Color</button>
+                  </div>
+                  <div class="accordian-color-content">
+                     <ul>
+                        <div class="custom-color">
+                           <label for="custom-color">Custom color</label>
+                           <div class="custom-color-overlay">
+                              <input type="color" name="" id="custom-color" value="#FFFFFF">
+                           </div>
+                        </div>
+                        <li class="color-list">Black<span class="black-color color"></span></li>
+                        <li class="color-list">Grey<span class="grey-color color"></span></li>
+                        <li class="color-list">Dark Red<span class="dark-red color"></span></li>
+                        <li class="color-list">Red<span class="red-color color"></span></li>
+                        <li class="color-list">Orange<span class="orange-color color"></span></li>
+                        <li class="color-list">Yellow<span class="yellow-color color"></span></li>
+                        <li class="color-list">Green<span class="green-color color"></span></li>
+                        <li class="color-list">Turquoise<span class="turquoise-color color"></span></li>
+                        <li class="color-list">Indigo<span class="indigo-color color"></span></li>
+                        <li class="color-list">Purple<span class="purple-color color"></span></li>
+                        <li class="color-list">White<span class="white-color color"></span></li>
+                        <li class="color-list">Light grey<span class="light-grey-color color"></span></li>
+                        <li class="color-list">Brown<span class="brown-color color"></span></li>
+                        <li class="color-list">Hot pink<span class="rose-color color"></span></li>
+                        <li class="color-list">Gold<span class="gold-color color"></span></li>
+                        <li class="color-list">Light yellow<span class="light-yellow-color color"></span></li>
+                        <li class="color-list">Lime<span class="lime-color color"></span></li>
+                        <li class="color-list">Aqua<span class="light-turqoise-color color"></span></li>
+                        <li class="color-list">magenta<span class="blue-grey-color color"></span></li>
+                        <li class="color-list">Lavender<span class="lavender-color color"></span></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="size-grid accordian-size">
+               <div class="accordian-size-content-part" data-visible="false">
+                  <div class="accordian-heading accordian-header-size">
+                     <button data-visible="false" class="size-tool">Size</button>
+                  </div>
+                  <div class="accordian-content">
+                     <ul>
+                        <li class="line-width" data-selected="false">2<p>px</p> <span class="four line"></span></li>
+                        <li class="line-width" data-selected="false">4<p>px</p> <span class="four line"></span></li>
+                        <li class="line-width" data-selected="false">6<p>px</p> <span class="six line"></span></li>
+                        <li class="line-width" data-selected="false">8<p>px</p> <span class="eight line"></span></li>
+                        <li class="line-width" data-selected="false">10<p>px</p> <span class="ten line"></span></li>
+                        <li class="line-custom-value" data-selected="false" >
+                           <span class="custom-width-header">Custom width</span>
+                           <input type="number" name="" id="line-width-custom-value" min="1" value="2" max="100">
+                           <span class="visual-custom-line-width"></span>
+                        </li>
+
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="eraser-custom-value">
+               <span class="custom-width-header">Eraser size</span>
+               <input type="number" name="" id="line-width-custom-value-eraser" value="2" min="1" max="100">
+               <span class="visual-custom-line-width-eraser" id="visualEraser"></span>
+            </div>
+            <div class="canvas-color">
+               <div for="color-picker" class="color-swatch">
+                  <input type="color" id="color-picker" />
+               </div>
+               <label for="color-picker">Canvas color</label>
+            </div>
+         </div>
+      </nav>
+      <canvas></canvas>
+   </div>
+   <p class="dmzt-dhruv">&COPY; DMZT dhruv - 2023</p>
+</body>
+<script src="app.js"></script>
+
+</html>
