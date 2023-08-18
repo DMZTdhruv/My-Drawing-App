@@ -15,6 +15,26 @@ body {
    justify-content: center;
    width: 100%;
    background-color: rgb(13, 12, 18);
+   overflow: hidden;
+}
+
+.cursor{
+   position: absolute;
+   height: 10px;
+   width: 10px;
+   z-index: 11111;
+   pointer-events: none;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   border-radius: 50px;
+   background-color: white;
+   border: 1px solid rgba(255, 255, 255, 0.496);
+   box-shadow: 0 0 50px 0.8rem rgba(255, 255, 255, 0.318);
+   transition: 0.5s height ease,
+               0.5s width ease,
+               0.5s background-color ease,
+               0.5s border ease
 }
 
 .dmzt-dhruv{
