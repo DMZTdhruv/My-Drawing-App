@@ -184,6 +184,7 @@ for (let i = 0; i < allColorList.length; i++) {
 
 colorInput.addEventListener("input", () => {
    colorValue = colorInput.value;
+   cursor.style.background = `${colorInput.value}`
 });
 
 // Canvas setup
