@@ -1,6 +1,24 @@
 // responsive nav
 const navBtn = document.querySelector(".navtogglebtn");
 const responSiveNav = document.querySelector(".responsive-nav");
+const cursor = document.querySelector('.cursor');
+
+const mouseCoordinates = {
+   x_axis: 0,
+   y_axis: 0
+}
+
+window.addEventListener('mousemove',(e)=>{
+
+   mouseCoordinates.x_axis = e.clientX;
+   mouseCoordinates.y_axis = e.clientY;
+
+   cursor.animate({
+      top: `${mouseCoordinates.y_axis}px`,
+      left: `${mouseCoordinates.x_axis}px`
+   },{fill: "forwards", duration: 250})
+})
+
 
 navBtn.addEventListener('click',()=>{
    const visibility = responSiveNav.getAttribute("data-visible");
@@ -65,6 +83,8 @@ eraserSize.addEventListener("input", () => {
    eraserSizeValue = parseInt(eraserSize.value);
    viusalEraser.style.width = `${eraserSizeValue}px`;
    viusalEraser.style.height = `${eraserSizeValue}px`;
+   cursor.style.height = `${eraserSizeValue}px`;
+   cursor.style.width = `${eraserSizeValue}px`;
 });
 
 customWidth.addEventListener("input", () => {
@@ -83,7 +103,6 @@ brushBtn.addEventListener("click", () => {
    if (drawOnCanvas) {
       colorValue = colorInput.value;
       lineWidthValue = customWidth.value;
-      console.log(customWidth.value)
    } else {
       return;
    }
@@ -92,13 +111,16 @@ brushBtn.addEventListener("click", () => {
       ? brushBtn.setAttribute("data-active", "true")
       : brushBtn.setAttribute("data-active", "false");
    eraserBtn.setAttribute("data-active", "false");
+   cursor.style.height = `8px`;
+   cursor.style.width = `8px`;
+   cursor.style.background = "white"
+   cursor.style.border = `0px solid white`
 });
 
 lineWidth.forEach((line) => {
    line.addEventListener("click", () => {
      lineWidthValue = parseInt(line.textContent);
      customWidth.value =  parseInt(line.textContent);
-     console.log(lineWidthValue)
      document.querySelector(".line-custom-value").setAttribute("data-selected", "false");
      lineWidth.forEach((otherLine) => {
        otherLine.setAttribute("data-selected", "false");
@@ -116,6 +138,10 @@ eraserBtn.addEventListener("click", () => {
       ? eraserBtn.setAttribute("data-active", "true")
       : eraserBtn.setAttribute("data-active", "false");
    brushBtn.setAttribute("data-active", "false");
+   cursor.style.height = `${eraserSizeValue}px`;
+   cursor.style.width = `${eraserSizeValue}px`;
+   cursor.style.background = "transparent"
+   cursor.style.border = `2px solid white`
 });
 
 
@@ -127,6 +153,7 @@ colorTool.addEventListener("click", () => {
    visibility === "false"
       ? colorContent.setAttribute("data-visible", "true")
       : colorContent.setAttribute("data-visible", "false");
+
 });
 
 
@@ -148,6 +175,7 @@ for (let i = 0; i < allColorList.length; i++) {
 
    allColorList[i].addEventListener('click', () => {
       colorValue = allColorList[i].textContent.split(" ").join("").toLowerCase();
+      cursor.style.background = colorValue;
    })
 }
 
@@ -230,6 +258,7 @@ function Paint() {
 
       if (drawOnCanvas) {
          this.draw();
+
       } else {
          this.erase();
       }
@@ -250,9 +279,6 @@ canvas.addEventListener("mousedown", function () {
 });
 
 
-
-
-
 canvas.addEventListener("mouseup", function () {
    draw = false;
    c.beginPath();
@@ -270,9 +296,10 @@ function animate() {
          brush.update("black", lineWidthValue, eraserSizeValue);
       }
    }
+
+
    requestAnimationFrame(animate);
 }
-
 
 
 animate();
@@ -305,5 +332,8 @@ clearCanvas.addEventListener('click', () => {
       drawNowSign.setAttribute("data-visible", toggleDrawSign);
    }, 1000);
    c.clearRect(0, 0, canvas.width, canvas.height);
-   console.log(canvasIsClear)
+   cursor.style.height = `8px`;
+   cursor.style.width = `8px`;
+   cursor.style.background = "white"
+   cursor.style.border = `0px solid white`
 });
